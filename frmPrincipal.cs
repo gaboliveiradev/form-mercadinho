@@ -75,6 +75,13 @@ namespace wpf_mercadinho
         {
             if(dgv_venda.Rows.Count > 0)
             {
+                total -=
+                int.Parse(dgv_venda.CurrentRow.Cells["cmn_valor_unit"].Value.ToString()) *
+                int.Parse(dgv_venda.CurrentRow.Cells["cmn_quantidade"].Value.ToString());
+                quantidade -= int.Parse(dgv_venda.CurrentRow.Cells["cmn_quantidade"].Value.ToString());
+
+                lbl_nota.Text = $"{quantidade} ITENS | {total.ToString("C")}";
+
                 dgv_venda.Rows.RemoveAt(dgv_venda.CurrentRow.Index);
             }
         }
